@@ -1,0 +1,21 @@
+img{
+    height: 100%;
+    width: 100%;
+
+}
+.slider{
+    overflow-x: hidden;
+}
+.slick-dots {
+    display: none !important ;
+}
+.slick-prev {
+    left: 3% !important;
+    z-index: 1;
+    top: 25% !important;
+  }
+  .slick-next {
+    top:25% !important;
+    right: 3% !important;
+    z-index: 1;
+  }

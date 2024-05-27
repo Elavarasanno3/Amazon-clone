@@ -1,0 +1,14 @@
+.product_group{
+    position: relative;
+    top: -300px;
+    z-index: 1;
+    backdrop-filter: blur(100px);
+    background-image: linear-gradient(to bottom, rgba(118, 178, 218, 0), #c7e7e7);
+    margin-bottom: -300px;
+}
+.group_product{
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    
+}

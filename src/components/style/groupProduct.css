@@ -1,0 +1,25 @@
+.group_of_product{
+    margin: 10px 20px 10px 0px;
+    background-color: white;
+    padding: 10px 20px;
+}
+.image_container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 40px 15px;
+}
+.img{
+    height: 90%;
+    width: 90%;
+}
+.image_footer{
+    font-size: 12px;
+    color: gray;
+}
+.group_product_more{
+    color: gray;
+    font-size: 14px;
+}
+.group_product_heading{
+    margin-bottom: 15px;
+}

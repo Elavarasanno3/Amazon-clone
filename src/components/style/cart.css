@@ -1,0 +1,4 @@
+.cart{
+    background-color: #e0e9e9;
+    min-height: calc(100vh - 100px);
+}
