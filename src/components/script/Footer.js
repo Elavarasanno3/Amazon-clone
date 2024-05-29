@@ -24,7 +24,7 @@ const Footer = () => {
           </ul>
           <ul>
             <li>Make Money with Us</li>
-            <li>Sell on Amazon</li>
+            <Link to="/addproduct" ><li>Sell on Amazon</li></Link>
             <li>Sell under Amazon Accelerator</li>
             <li>Amazon Global Selling</li>
             <li>Become an Affiliate</li>

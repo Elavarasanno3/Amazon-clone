@@ -23,7 +23,6 @@ const AddProduct = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    console.log(`File size: ${file.size} bytes`);
     setFormData({
       ...formData,
       image: file

@@ -1,38 +1,56 @@
 import React, { useEffect } from 'react';
-import '../style/singleProduct.css';
-import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchProducts } from '../../feautures/product/productSlice'; // Import the fetchProducts action
+import { useDispatch, useSelector } from 'react-redux';
+import { addProductToCart } from '../../feautures/cart/cartSlice';
+import { fetchProducts } from '../../feautures/product/productSlice'; // Import fetchProducts action
+import '../style/singleProduct.css';
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
-  const { products, status } = useSelector((state) => state.product);
+  const user = useSelector((state) => state.user);
+  const products = useSelector((state) => state.product.products);
 
   useEffect(() => {
-    // Dispatch the fetchProducts action when the component mounts
+    // Dispatch fetchProducts action when component mounts
     dispatch(fetchProducts());
-  }, [dispatch]);
+  }, [dispatch]); // Dispatch only once when the component mounts
 
-  if (status === 'loading') {
-    return <div>Loading...</div>; // Display a loading indicator while fetching products
-  }
+  const handleAddToCart = (product) => {
+    if (!user.email) {
+      alert('You need to log in to add items to the cart');
+      return;
+    }
 
+    dispatch(addProductToCart({ product, userEmail: user.email }));
+  };
+
+  // Helper function to generate star emojis based on ratings
+  const renderStars = (ratings) => {
+    const stars = [];
+    for (let i = 0; i < ratings; i++) {
+      stars.push(<span key={i}>⭐</span>);
+    }
+    return stars;
+  };
 
   return (
     <div className='single_product_set'>
-      {products.map((product) => (       
-        <div key={product.id }>
+      {products.map((product) => (
+        <div key={product.id}>
           <li className='single_of_product'>
             <Link className='link' to={`/details/${product.id}`}>
-              <img alt='' className='single_img' src={`data:image/jpeg;base64,${product.image}`} />
+              <img
+                alt={product.name}
+                className='single_img'
+                src={`data:image/jpeg;base64,${product.imageString}`}
+              />
             </Link>
-            
             <h4>
               <span>₹</span> {product.amount}
             </h4>
             <p>{product.name}</p>
-            {/* <small>{Array(product.ratings).fill(<span>⭐</span>)}</small> */}
-            <button onClick={() => { /* Handle add to cart */ }} className='cart_button'>
+            <div>{renderStars(product.ratings)}</div>
+            <button onClick={() => handleAddToCart(product)} className='cart_button'>
               Add To Cart
             </button>
           </li>

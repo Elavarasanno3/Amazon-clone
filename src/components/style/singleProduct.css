@@ -13,9 +13,10 @@
     border: none;
     height: 350px;
     line-height: 1.7;
+    border: 3px solid whitesmoke;
 }
 .single_of_product:hover{
-    border: 1px solid gray;
+    border: 3px solid gray;
 }
 .single_img{
     height: 200px;

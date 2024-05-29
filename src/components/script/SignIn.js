@@ -65,7 +65,7 @@ const SignIn = () => {
           <p className='privacy_and_conditions'><span className='conditions'>Need help?</span></p>
           <div className='amazon_business'>
             <h5>Want to sell?</h5>
-            <p><span className='business'>Shop on Amazon Business</span></p>
+              <p><span className='business'>Shop on Amazon Business</span></p>
           </div>
         </div>
         <div className='create_account_container'>
