@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductToCart } from '../../feautures/cart/cartSlice';
-import { fetchProducts } from '../../feautures/product/productSlice'; // Import fetchProducts action
+import { fetchProducts } from '../../feautures/product/productSlice';
 import '../style/singleProduct.css';
 
 const SingleProduct = () => {
@@ -11,20 +11,18 @@ const SingleProduct = () => {
   const products = useSelector((state) => state.product.products);
 
   useEffect(() => {
-    // Dispatch fetchProducts action when component mounts
     dispatch(fetchProducts());
-  }, [dispatch]); // Dispatch only once when the component mounts
+  }, [dispatch]);
 
   const handleAddToCart = (product) => {
     if (!user.email) {
       alert('You need to log in to add items to the cart');
       return;
     }
-
+    console.log(product)
     dispatch(addProductToCart({ product, userEmail: user.email }));
   };
 
-  // Helper function to generate star emojis based on ratings
   const renderStars = (ratings) => {
     const stars = [];
     for (let i = 0; i < ratings; i++) {

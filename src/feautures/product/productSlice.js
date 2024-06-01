@@ -1,16 +1,34 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchProducts = createAsyncThunk('product/fetchProducts', async () => {
-  const response = await fetch('http://localhost:8080/api/products/all');
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch('http://localhost:8080/api/products/all');
+    if (!response.ok) {
+      throw new Error('Failed to fetch products');
+    }
+    const data = await response.json();
+    console.log('Fetched products:', data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching products:', error.message);
+    throw error;
+  }
 });
 
 // Async thunk to fetch a single product by its ID
 export const fetchProductById = createAsyncThunk('product/fetchProductById', async (productId) => {
-  const response = await fetch(`http://localhost:8080/api/products/${productId}`);
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(`http://localhost:8080/api/products/${productId}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch product details');
+    }
+    const data = await response.json();
+    console.log('Fetched product details:', data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching product details:', error.message);
+    throw error;
+  }
 });
 
 const productSlice = createSlice({
